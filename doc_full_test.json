@@ -1,0 +1,135 @@
+{
+  "wasAssociatedWith": {
+    "_:wAW6": {
+      "prov:activity": "foundry:assignId",
+      "prov:agent": "foundry:docIdAssigner"
+    },
+    "_:wAW9": {
+      "prov:activity": "foundry:act1",
+      "prov:agent": "foundry:agt1"
+    }
+  },
+
+  "entity": {
+    "foundry:en_1": {
+      "foundry:sourceId": {
+        "$": "nlx_999998",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8978",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-07-21T16:05:03-07:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20140721",
+        "type": "xsd:string"
+      }
+    },
+
+    "foundry:en_2": {
+      "foundry:sourceId": {
+        "$": "nlx_999998",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8979",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-07-21T16:05:06-07:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20140721",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:en_3": {
+      "foundry:sourceId": {
+        "$": "nlx_999998",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8990",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-07-21T18:05:03-07:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20140721",
+        "type": "xsd:string"
+      }
+    }
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  },
+  "used": {
+    "_:u6": {
+      "prov:activity": "foundry:assignId",
+      "prov:entity": "foundry:en_1"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:wGB3": {
+      "prov:entity": "foundry:en_2",
+      "prov:activity": "foundry:assignId"      
+    }
+  },
+
+  "wasAttributedTo": {
+    "_:wAT3": {
+      "prov:entity": "foundry:en_3",
+      "prov:agent": "foundry:agt1"      
+    }
+  },
+
+  "agent": {
+    "foundry:docIdAssigner": {
+      "prov:type": {
+        "$": "prov:SoftwareAgent",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:agt1": {
+      "prov:type": {
+        "$": "prov:SoftwareAgent",
+        "type": "xsd:string"
+      }
+    }
+  },
+  "activity": {
+    "foundry:assignId": {
+      "prov:type": {
+        "$": "doc-id-assigment",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-07-21T16:05:02-07:00",
+      "prov:endTime": "2014-07-21T16:05:03-07:00"
+    },
+    "foundry:act1": {
+      "prov:type": {
+        "$": "doc-id-assigment",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-07-21T18:05:02-07:00",
+      "prov:endTime": "2014-07-21T18:05:03-07:00"
+    },
+    "foundry:act2": {
+      "prov:type": {
+        "$": "doc-id-aaa",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-07-21T15:05:02-07:00",
+      "prov:endTime": "2014-07-21T15:05:03-07:00"
+    }
+  }
+}

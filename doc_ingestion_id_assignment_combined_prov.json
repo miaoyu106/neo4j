@@ -1,0 +1,83 @@
+{
+  "wasAssociatedWith": {
+    "_:wAW7": {
+      "prov:activity": "foundry:ac_1",
+      "prov:agent": "foundry:ag_1"
+    },
+    "_:wAW8": {
+      "prov:activity": "foundry:assignId",
+      "prov:agent": "foundry:docIdAssigner"
+    }
+  },
+  "entity": {
+    "foundry:en_1": {
+      "foundry:sourceId": {
+        "$": "nlx_999998",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20140721",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-07-21T16:05:04-07:00",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8978",
+        "type": "xsd:string"
+      }
+    }
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  },
+  "used": {
+    "_:u7": {
+      "prov:activity": "foundry:ac_1",
+      "prov:entity": "foundry:en_1"
+    },
+    "_:u8": {
+      "prov:activity": "foundry:assignId",
+      "prov:entity": "foundry:en_1"
+    }
+  },
+  "agent": {
+    "foundry:docIdAssigner": {
+      "prov:type": {
+        "$": "prov:SoftwareAgent",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:ag_1": {
+      "prov:type": {
+        "$": "prov:SoftwareAgent",
+        "type": "xsd:string"
+      },
+      "foundry:name": {
+        "$": "DocIngestorCLI",
+        "type": "xsd:string"
+      }
+    }
+  },
+  "activity": {
+    "foundry:assignId": {
+      "prov:type": {
+        "$": "doc-id-assigment",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-07-21T16:05:02-07:00",
+      "prov:endTime": "2014-07-21T16:05:03-07:00"
+    },
+    "foundry:ac_1": {
+      "prov:type": {
+        "$": "ingest-docs",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-07-21T16:05:00.000-07:00",
+      "prov:endTime": "2014-07-21T16:05:01.000-07:00"
+    }
+  }
+}
