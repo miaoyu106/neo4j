@@ -1,0 +1,36 @@
+{
+	"agent": {
+        "ex:Simon": {
+              "prov:type": {
+                "$": "prov:Person",
+                "type": "xsd:QName"
+            }
+        },
+        "ex:Paolo": {
+              "prov:type": {
+                "$": "prov:Person",
+                "type": "xsd:QName"
+            }
+        }
+    },
+    "entity": {
+        "tr:WD-prov-dm-20111215": {
+              "prov:type": {
+                "$": "rec54:WD",
+                "type": "xsd:QName"
+            }
+        }
+    },
+    "wasAttributedTo": {
+        "_:wAT1": {
+            "prov:type": "authorship",
+            "prov:agent": "ex:Simon",
+            "prov:entity": "tr:WD-prov-dm-20111215"
+        },
+        "_:wAT2": {
+            "prov:type": "editorship",
+            "prov:agent": "ex:Paolo",
+            "prov:entity": "tr:WD-prov-dm-20111215"
+        }
+    }
+}

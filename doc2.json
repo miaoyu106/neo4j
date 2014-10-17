@@ -1,0 +1,53 @@
+{
+  "wasDerivedFrom": {
+    "_:wDF3": {
+      "prov:generatedEntity": "foundry:en2",
+      "prov:usedEntity": "foundry:en1"
+    }
+  },
+  "entity": {
+    "foundry:en1": {
+      "foundry:sourceId": {
+        "$": "nlx_999998",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8978",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-07-21T16:05:03-07:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20140721",
+        "type": "xsd:string"
+      }
+    },
+
+    "foundry:en2": {
+      "foundry:sourceId": {
+        "$": "nlx_999998",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8979",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-07-21T16:05:06-07:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20140721",
+        "type": "xsd:string"
+      }
+    }
+
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  }
+}
