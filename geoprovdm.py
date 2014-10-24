@@ -7,7 +7,7 @@ from py2neo import neo4j, node, rel
 _geoprovdm_version=0.1
 
 class GeoProvDM:
-  """ Main class that provides all functionality needed
+  """ Main class that provides  all functionality needed
   to create entities, agents, activities and to relations among them
   """
   # global connections for neo4j
@@ -119,6 +119,7 @@ class GeoProvDM:
 
   #'used':['activity', 'entity'], 
   _requiredIdsInRelation = {'wasAssociatedWith':['activity', 'agent'],\
+    'used':['activity', 'entity'],\
     'wasInvalidatedBy':['entity', 'activity'], \
     'wasGeneratedBy':['entity', 'activity'], \
     'wasAttributedTo':['entity', 'agent'], \

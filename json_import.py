@@ -52,6 +52,8 @@ def neo2json(aneo):
                             res['wasGeneratedBy'][node[size]["name"]]={"prov:entity": o_id, "prov:activity": i_id}  
                         elif node[size].type == 'wasAttributedTo':
                             res['wasAttributedTo'][node[size]["name"]]={"prov:entity": o_id, "prov:agent": i_id}
+                        elif node[size].type == 'used':
+                            res['used'][node[size]["name"]]={"prov:activity": o_id, "prov:entity": i_id}
                         elif node[size].type == 'wasDerivedFrom':
                             res['wasDerivedFrom'][node[size]["name"]]={"prov:generatedEntity": o_id, "prov:usedEntity": i_id}
                         elif node[size].type == 'actedOnBehalfOf':
