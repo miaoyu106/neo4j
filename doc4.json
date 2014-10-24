@@ -24,7 +24,7 @@
     "wasAttributedTo": {
         "_:wAT1": {
             "prov:type": "authorship",
-            "prov:agent": "ex:Simon",
+            "prov:agent": "ex:simon",
             "prov:entity": "tr:WD-prov-dm-20111215"
         },
         "_:wAT2": {

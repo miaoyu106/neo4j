@@ -12,7 +12,7 @@
     "wasStartedBy": {
         "_:wSB2": {
             "prov:activity": "a1",
-            "prov:time": "2011-11-16T16:05:00",
+            "prov:time": "2011-11-16T16:010:00",
             "prov:trigger": "e1"
         }
     }
