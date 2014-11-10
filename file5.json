@@ -1,0 +1,95 @@
+{
+  "wasGeneratedBy": {
+    "_:wGB7": {
+      "prov:entity": "foundry:en9",
+      "prov:activity": "foundry:ac3"      
+    }
+  },
+
+  "used": {
+    "_:u5": {
+      "prov:activity": "foundry:ac3",
+      "prov:entity": "foundry:en4"      
+    },
+    "_:u6": {
+      "prov:activity": "foundry:ac3",
+      "prov:entity": "foundry:en7"      
+    }
+  },
+
+  "entity": {
+    "foundry:en4": {
+      "foundry:sourceId": {
+        "$": "nlx_999993",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8983",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:12:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:en7": {
+      "foundry:sourceId": {
+        "$": "nlx_999991",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8984",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:15:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:en9": {
+      "foundry:sourceId": {
+        "$": "nlx_999990",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8986",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:18:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId":{
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    }
+
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  },
+  
+
+  "activity": {
+    "foundry:ac3": {
+      "prov:type": {
+        "$": "act3",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-11-01T00:17:00",
+      "prov:endTime": "2014-11-01T00:19:00"
+    }
+
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "wasGeneratedBy": {
+    "_:wGB2": {
+      "prov:entity": "foundry:en6",
+      "prov:activity": "foundry:ac6"      
+    }
+  },
+
+  "used": {
+    "_:u2": {
+      "prov:activity": "foundry:ac6",
+      "prov:entity": "foundry:en5"      
+    }
+  },
+
+  "wasInformedBy": {
+    "_:wIB1": {
+      "prov:informed": "foundry:ac6",
+      "prov:informant": "foundry:ac1"      
+    }
+  },
+
+  "entity": {
+    "foundry:en5": {
+      "foundry:sourceId": {
+        "$": "nlx_999996",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8980",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:07:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    },
+
+    "foundry:en6": {
+      "foundry:sourceId": {
+        "$": "nlx_999995",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8981",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:10:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    }
+
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  },
+  
+
+  "activity": {
+    "foundry:ac6": {
+      "prov:type": {
+        "$": "act1",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-11-01T00:09:00",
+      "prov:endTime": "2014-11-01T00:12:00"
+    }
+
+  }
+}

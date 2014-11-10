@@ -1,0 +1,49 @@
+{
+  "wasInvalidatedBy": {
+    "_:wIB1": {
+      "prov:entity": "foundry:en3",
+      "prov:activity": "foundry:ac5"      
+    }
+  },
+
+
+  "entity": {
+    "foundry:en3": {
+      "foundry:sourceId": {
+        "$": "nlx_999994",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8982",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:12:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId":{
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    }
+
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  },
+  
+
+  "activity": {
+    "foundry:ac5": {
+      "prov:type": {
+        "$": "act5",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-11-01T00:15:00",
+      "prov:endTime": "2014-11-01T00:17:00"
+    }
+
+  }
+}

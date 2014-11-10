@@ -1,0 +1,103 @@
+{
+  "wasGeneratedBy": {
+    "_:wGB5": {
+      "prov:entity": "foundry:en7",
+      "prov:activity": "foundry:ac7"      
+    },
+    "_:wGB6": {
+      "prov:entity": "foundry:en8",
+      "prov:activity": "foundry:ac7"      
+    }
+  },
+
+  "used": {
+    "_:u4": {
+      "prov:activity": "foundry:ac7",
+      "prov:entity": "foundry:en6"      
+    }
+  },
+
+  "wasInformedBy": {
+    "_:wIB2": {
+      "prov:informed": "foundry:ac7",
+      "prov:informant": "foundry:ac2"      
+    }
+  },
+
+
+  "entity": {
+    "foundry:en6": {
+      "foundry:sourceId": {
+        "$": "nlx_999995",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8981",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:10:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:en7": {
+      "foundry:sourceId": {
+        "$": "nlx_999993",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8984",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:15:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId": {
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    },
+    "foundry:en8": {
+      "foundry:sourceId": {
+        "$": "nlx_999992",
+        "type": "xsd:string"
+      },
+      "foundry:UUID": {
+        "$": "1234-4567-8985",
+        "type": "xsd:string"
+      },
+      "foundry:creationTime": {
+        "$": "2014-11-01T00:15:00",
+        "type": "xsd:string"
+      },
+      "foundry:batchId":{
+        "$": "20141101",
+        "type": "xsd:string"
+      }
+    }
+
+  },
+  "prefix": {
+    "xsd": "http://www.w3.org/2001/XMLSchema",
+    "prov": "http://www.w3.org/ns/prov#",
+    "foundry": "http://example.org"
+  },
+  
+
+  "activity": {
+    "foundry:ac7": {
+      "prov:type": {
+        "$": "act2",
+        "type": "xsd:string"
+      },
+      "prov:startTime": "2014-11-01T00:14:00",
+      "prov:endTime": "2014-11-01T00:17:00"
+    }
+
+  }
+}
