@@ -5,6 +5,7 @@ from py2neo import neo4j, node, rel
 
 # convert a prov-dm json to a python dictionary object
 #   with key and value of type string
+
 def main():
     p = GeoProvDM("http://localhost:7474/db/data/", True)
     # input file

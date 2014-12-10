@@ -1,4 +1,5 @@
 import sys, os, datetime, decimal
+import dateutil.parser,calendar
 
 # http://book.py2neo.org/en/latest/fundamentals/#node-relationship-abstracts
 from py2neo import neo4j, node, rel
@@ -46,6 +47,25 @@ class GeoProvDM:
     :param entity: a dictionary of attributes of the entity
     """
     return self._addObject(self._ENTITY, entity)
+
+  _REQUESTID = "RequestId"
+  def addRequestId(self):
+    tmp= {}
+    tmp["_id"]="prodNode:rid1"
+    tmp["prov:type"]="RequestId"
+    tmp["prov:number"]="1"
+    rid= json.loads(json.dumps(tmp))
+    return self._addObject(self._REQUESTID, rid)
+
+  _ORDER = "Order"
+  def addOrder(self,actType):
+    tmp= {}
+    tmp["_id"]="prodNode:"+actType
+    tmp["prov:type"]="Order"
+    tmp["prov:actType"]=actType
+    tmp["prov:order"]="1"
+    order= json.loads(json.dumps(tmp))
+    return self._addObject(self._ORDER, order)  
     
   def _addObject(self, objType, obj):
     if not obj.has_key("_id"):
@@ -54,6 +74,10 @@ class GeoProvDM:
       return False
       
     obj['_geoprovdm_version'] = _geoprovdm_version
+    if objType!="RequestId" and objType!="Order":
+        obj['prov:RequestId'] = self._getRequestId()["prov:number"]
+    if objType=="Activity":
+        obj['prov:order'] = self._getOrder(obj['prov:type'])["prov:order"]
     a_node, = self._neo_graph.create(obj)
     a_node.add_labels(objType)
     return True
@@ -108,6 +132,46 @@ class GeoProvDM:
     node = query.execute_one(p_id = nodeId)
     return node
 
+  def getNodeInformant(self, actId,order):
+    query = neo4j.CypherQuery(self._neo_graph, \
+      "MATCH (ee:Activity) WHERE ee.`prov:type` = {act} AND ee.`prov:order`={a_order} RETURN ee;")
+    node = query.execute_one(act = actId,a_order=order)
+    return node
+
+  def _getRequestId(self):
+    query = neo4j.CypherQuery(self._neo_graph, \
+      "MATCH (rId:RequestId) RETURN rId;")
+    node = query.execute_one()
+    return node
+
+  def getRequestId(self):
+    return self._getRequestId()
+
+  def updateRequestId(self):
+    query = neo4j.CypherQuery(self._neo_graph, \
+      "MATCH (rId:RequestId) RETURN rId;")
+    node = query.execute_one()
+    tmp=node["prov:number"]
+    node["prov:number"]=str(int(tmp)+1)
+    return node
+
+  def updateOrder(self,actType):
+    query = neo4j.CypherQuery(self._neo_graph, \
+      "MATCH (o:Order) Where o.`prov:actType`={atype} RETURN o;")
+    node = query.execute_one(atype=actType)
+    tmp=node["prov:order"]
+    node["prov:order"]=str(int(tmp)+1)
+    return node
+
+  def _getOrder(self,actType):
+    query = neo4j.CypherQuery(self._neo_graph, \
+      "MATCH (o:Order) Where o.`prov:actType`={atype} RETURN o;")
+    node = query.execute_one(atype=actType)
+    return node
+
+  def getOrder(self,actType):
+    return self._getOrder(actType)
+  
   #'used':['activity', 'entity'], 
   _requiredIdsInRelation = {'wasAssociatedWith':['activity', 'agent'],\
     'used':['activity', 'entity'],\
@@ -188,6 +252,8 @@ class GeoProvDM:
     result = query.execute(p_uuid = nodeUuid, aname= activityname,rid2= id2)
     return result
 
+# res=dateutil.parser.parse("2014-11-01T00:04:00")
+# calendar.timegm(res.timetuple())
 
 #Retrieve PROV-DM compliant provenance  of all resources used by an activity ‘activity name’ between time ‘datetime1’ and ‘datetime2’
   def getNodeUsedByActivityWithTimestamp(self, activityname, datetime1, datetime2):
