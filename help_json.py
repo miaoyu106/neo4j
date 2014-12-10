@@ -1,4 +1,4 @@
-#from geoprovdm import *
+from geoprovdm import *
 import sys,json
 from py2neo import neo4j, node, rel
 
@@ -21,41 +21,44 @@ def neo2json(aneo):
     if aneo is not None:
         for paths in aneo:
             for path in paths:
-                rels= path.relationships               
-                nodes= path.nodes
-                for r in rels:
-                    if r.type not in res:
-                            res[r.type] ={}
-                    if r.type == 'wasDerivedFrom':
-                        res['wasDerivedFrom'][r["name"]]={"prov:generatedEntity": r.start_node["_id"], "prov:usedEntity": r.end_node["_id"]}
-                    elif r.type == 'actedOnBehalfOf':
-                        res['actedOnBehalfOf'][r["name"]]={"prov:delegate": r.start_node["_id"], "prov:responsible": r.end_node["_id"]}
-                    elif r.type == 'wasInformedBy':
-                        res['wasInformedBy'][r["name"]]={"prov:informed": r.start_node["_id"], "prov:informant": r.end_node["_id"]}
-                    elif r.type == 'wasStartedBy':
-                        res['wasStartedBy'][r["name"]]={"prov:activity": r.start_node["_id"], "prov:trigger":  r.end_node["_id"]}
-                    elif r.type == 'wasEndedBy':
-                        res['wasEndedBy'][r["name"]]={"prov:activity": r.start_node["_id"], "prov:trigger":  r.end_node["_id"]}    
-                    else:
-                        s=r.start_node.get_labels()# type is set
-                        e=r.end_node.get_labels()
-                        if "Activity" in s:
-                            st='activity'
-                        elif "Entity" in s:
-                            st='entity'
-                        elif "Agent" in s:
-                            st='agent'
-                        if "Activity" in e:
-                            et='activity'
-                        elif "Entity" in e:
-                            et='entity'
-                        elif "Agent" in e:
-                            et='agent'
-                        snode='prov:'+ st
-                        enode='prov:'+ et 
-                        res[r.type][r["name"]]={snode: r.start_node["_id"], enode: r.end_node["_id"]}
-                            
+                if hasattr(paths, "relationships"):
+                    rels= path.relationships               
+                    #nodes= path.nodes
+                    for r in rels:
+                        if r.type not in res:
+                                res[r.type] ={}
+                        if r.type == 'wasDerivedFrom':
+                            res['wasDerivedFrom'][r["name"]]={"prov:generatedEntity": r.start_node["_id"], "prov:usedEntity": r.end_node["_id"]}
+                        elif r.type == 'actedOnBehalfOf':
+                            res['actedOnBehalfOf'][r["name"]]={"prov:delegate": r.start_node["_id"], "prov:responsible": r.end_node["_id"]}
+                        elif r.type == 'wasInformedBy':
+                            res['wasInformedBy'][r["name"]]={"prov:informed": r.start_node["_id"], "prov:informant": r.end_node["_id"]}
+                        elif r.type == 'wasStartedBy':
+                            res['wasStartedBy'][r["name"]]={"prov:activity": r.start_node["_id"], "prov:trigger":  r.end_node["_id"]}
+                        elif r.type == 'wasEndedBy':
+                            res['wasEndedBy'][r["name"]]={"prov:activity": r.start_node["_id"], "prov:trigger":  r.end_node["_id"]}    
+                        else:
+                            s=r.start_node.get_labels()# type is set
+                            e=r.end_node.get_labels()
+                            if "Activity" in s:
+                                st='activity'
+                            elif "Entity" in s:
+                                st='entity'
+                            elif "Agent" in s:
+                                st='agent'
+                            if "Activity" in e:
+                                et='activity'
+                            elif "Entity" in e:
+                                et='entity'
+                            elif "Agent" in e:
+                                et='agent'
+                            snode='prov:'+ st
+                            enode='prov:'+ et 
+                            res[r.type][r["name"]]={snode: r.start_node["_id"], enode: r.end_node["_id"]}
+                nodes= path.nodes            
                 for n in nodes:
+                    print n
+                    print n.get_indexes()
                     if "Activity" in n.get_labels():
                         if "activity" not in res:
                             res["activity"]={}
@@ -80,6 +83,11 @@ def neo2json(aneo):
     return res2
     
 def createGraph(obj,p):
+    if p.getRequestId() is None:
+        p.addRequestId()
+    else:
+        p.updateRequestId() 
+    
     # make all entities
     try:
         entities = obj['entity']
@@ -105,17 +113,24 @@ def createGraph(obj,p):
         for k in acts.keys():
             act = json2obj(acts[k])
             act[u'_id'] = k
-            p.addActivity(act)
+            order= p.getOrder(act[u'prov:type'])
+            if order is None:
+                p.addOrder(act[u'prov:type'])
+                p.addActivity(act)
+            else:                
+                old=p.getNodeInformant(act[u'prov:type'],order["prov:order"])
+                p.updateOrder(act[u'prov:type'])
+                p.addActivity(act)
+                nodelist=json.loads(json.dumps({"prov:informed":act[u'_id'],"prov:informant":old["_id"]}))
+                p.addRelation("wasInformedBy","_:wIB"+act[u'_id']+old['_id'],nodelist)
 
     # =========================
     # === add all relations ===
     for rel in p.getRequiredIdsInRelation().keys():
-        #print(rel)
         try:
             relations = obj[rel]
-            #print(relations)
             for name in relations.keys():
-                #print(name)
                 p.addRelation(rel, name, relations[name])
         except KeyError:
             pass
+

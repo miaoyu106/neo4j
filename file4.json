@@ -17,14 +17,6 @@
     }
   },
 
-  "wasInformedBy": {
-    "_:wIB2": {
-      "prov:informed": "foundry:ac7",
-      "prov:informant": "foundry:ac2"      
-    }
-  },
-
-
   "entity": {
     "foundry:en6": {
       "foundry:sourceId": {

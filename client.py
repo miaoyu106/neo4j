@@ -8,11 +8,16 @@ from py2neo import neo4j, node, rel
 def main():
     p = GeoProvDM("http://localhost:7474/db/data/", True)
     # input file
-    #filename =['file01.json'] #'file1.json' #'doc3.json'
-    filename=['file1.json','file2.json','file3.json','file4.json','file5.json','file6.json','file6.json','file7.json']
-    if len(sys.argv) == 2:
-        filename = sys.argv[1]
-        print(filename)
+    #filename =['file01.json'] #'file1.json'
+    filename=['file1.json','file2.json','file3.json','file4.json','file5.json','file6.json','file7.json']
+#     if len(sys.argv) <3  or sys.argv[1]!="-i" :
+#         sys.exit("Must provide files")
+#     filename=[]
+#     cur=2
+#     while cur<len(sys.argv):
+#         filename.append(sys.argv[cur])
+#         cur+=1
+    
         
     # read input data
     for f in filename:
@@ -21,7 +26,7 @@ def main():
             # === add all objects ===
             createGraph(obj,p)
             
-    res1 = p.getNodeByUuid("1234-4567-8979")
+    res1 = p.getNodeByUuid("1234-4567-8985")
     res01= neo2json(res1)
     print(res01)
     
@@ -83,3 +88,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

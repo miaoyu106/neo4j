@@ -3,10 +3,12 @@
     "_:u7": {
       "prov:activity": "foundry:ac4",
       "prov:entity": "foundry:en9"      
-    },
-    "_:u8": {
-      "prov:activity": "foundry:ac4",
-      "prov:entity": "foundry:en10"      
+    }
+  },
+ "wasGeneratedBy": {
+    "_:wGB7": {
+      "prov:entity": "foundry:en10",
+      "prov:activity": "foundry:ac4"      
     }
   },
 
